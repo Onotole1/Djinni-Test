@@ -1,0 +1,5 @@
+# definitition of the C++ interface to be called from Java
+prime_generator_djinni = interface +c {
+      static create(): prime_generator_djinni;
+      generate_prime(amount : i64) : list<i64>;
+}
