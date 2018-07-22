@@ -61,6 +61,7 @@ interface MainSubComponent {
             val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setPageSize(100)
+                    .setPrefetchDistance(5)
                     .build()
 
 
