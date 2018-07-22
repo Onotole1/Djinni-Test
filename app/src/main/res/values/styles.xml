@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextAppearance.RobotoRegular" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/roboto_regular_family</item>
+        <item name="fontFamily">@font/roboto_regular_family</item>
+    </style>
+
+    <style name="TextAppearance.RobotoMedium" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/roboto_medium_family</item>
+        <item name="fontFamily">@font/roboto_medium_family</item>
+    </style>
+
+    <style name="TextAppearance.RobotoBold" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/roboto_bold_family</item>
+        <item name="fontFamily">@font/roboto_bold_family</item>
+    </style>
+
 </resources>

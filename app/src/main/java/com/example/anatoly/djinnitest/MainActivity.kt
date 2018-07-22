@@ -1,9 +1,12 @@
 package com.example.anatoly.djinnitest
 
-import android.support.v7.app.AppCompatActivity
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
-import com.example.anatoly.djinnigenerated.PrimeGeneratorDjinni
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
+import com.example.anatoly.djinnitest.core.dagger.AppComponent
+import com.example.anatoly.djinnitest.paging.PrimeNumbersAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,16 +15,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val primes = PrimeGeneratorDjinni.create().generatePrime(100)
+        val viewModelFactory = AppComponent.instance.mainSubComponent().viewModelFactory()
 
-        Log.d("Primes:", primes.joinToString())
-    }
+        val viewModel = ViewModelProviders.of(this, viewModelFactory)[MainViewModel::class.java]
 
-    companion object {
+        val adapter = PrimeNumbersAdapter {
+            //do nothing
+        }.apply {
+            submitList(viewModel.pagedList)
+        }
 
-        // Used to load the 'native-lib' library on application startup.
-        init {
-            System.loadLibrary("prime")
+        viewModel.stateLiveData.observe(this, Observer {
+            adapter.setNetworkState(it)
+        })
+
+        recycler.apply {
+            this.adapter = adapter
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
     }
 }
