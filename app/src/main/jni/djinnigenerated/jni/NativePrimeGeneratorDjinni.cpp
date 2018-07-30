@@ -28,13 +28,13 @@ CJNIEXPORT jobject JNICALL Java_com_example_anatoly_djinnigenerated_PrimeGenerat
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT jobject JNICALL Java_com_example_anatoly_djinnigenerated_PrimeGeneratorDjinni_00024CppProxy_native_1generatePrime(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jlong j_amount)
+CJNIEXPORT jobject JNICALL Java_com_example_anatoly_djinnigenerated_PrimeGeneratorDjinni_00024CppProxy_native_1generatePrime(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef, jint j_amount)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
         const auto& ref = ::djinni::objectFromHandleAddress<::Prime::PrimeGeneratorDjinni>(nativeRef);
-        auto r = ref->generate_prime(::djinni::I64::toCpp(jniEnv, j_amount));
-        return ::djinni::release(::djinni::List<::djinni::I64>::fromCpp(jniEnv, r));
+        auto r = ref->generate_prime(::djinni::I32::toCpp(jniEnv, j_amount));
+        return ::djinni::release(::djinni::List<::djinni::I32>::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 

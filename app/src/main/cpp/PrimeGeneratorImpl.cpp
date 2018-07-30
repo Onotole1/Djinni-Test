@@ -7,6 +7,7 @@
 //
 
 #include <stdio.h>
+#include <cmath>
 #include "PrimeGeneratorImpl.hpp"
 
 namespace Prime {
@@ -18,9 +19,9 @@ namespace Prime {
     PrimeGeneratorImpl::PrimeGeneratorImpl() {
     }
 
-    std::vector<int64_t> PrimeGeneratorImpl::generate_prime(int64_t amount) {
+    std::vector<int32_t> PrimeGeneratorImpl::generate_prime(int32_t amount) {
         int *a = new int[amount + 1];
-        std::vector<int64_t> result(0);
+        std::vector<int32_t> result(0);
         for (int i = 0; i < amount + 1; i++) {
             a[i] = i;
         }
@@ -31,6 +32,8 @@ namespace Prime {
                     a[j] = 0;
             }
         }
+
+        delete[](a);
 
         return result;
     }

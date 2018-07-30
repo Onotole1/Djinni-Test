@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /** definitition of the C++ interface to be called from Java */
 public abstract class PrimeGeneratorDjinni {
-    public abstract ArrayList<Long> generatePrime(long amount);
+    public abstract ArrayList<Integer> generatePrime(int amount);
 
     public static PrimeGeneratorDjinni create()
     {
@@ -39,12 +39,12 @@ public abstract class PrimeGeneratorDjinni {
         }
 
         @Override
-        public ArrayList<Long> generatePrime(long amount)
+        public ArrayList<Integer> generatePrime(int amount)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
             return native_generatePrime(this.nativeRef, amount);
         }
-        private native ArrayList<Long> native_generatePrime(long _nativeRef, long amount);
+        private native ArrayList<Integer> native_generatePrime(long _nativeRef, int amount);
 
         public static native PrimeGeneratorDjinni create();
     }

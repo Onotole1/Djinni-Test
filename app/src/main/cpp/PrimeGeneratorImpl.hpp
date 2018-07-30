@@ -16,6 +16,6 @@ namespace Prime {
     public:
         PrimeGeneratorImpl();
 
-        std::vector<int64_t> generate_prime(int64_t amount);
+        std::vector<int32_t> generate_prime(int32_t amount);
     };
 }

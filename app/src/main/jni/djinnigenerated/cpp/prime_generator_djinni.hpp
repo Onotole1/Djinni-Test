@@ -16,7 +16,7 @@ public:
 
     static std::shared_ptr<PrimeGeneratorDjinni> create();
 
-    virtual std::vector<int64_t> generate_prime(int64_t amount) = 0;
+    virtual std::vector<int32_t> generate_prime(int32_t amount) = 0;
 };
 
 }  // namespace Prime
